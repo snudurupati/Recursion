@@ -17,6 +17,14 @@ object Factorials {
     factorial(n, 1)
   }
 
+  //  factorial with curried tail recursion
+  def currTailRecFactorial(f: Int => Int)(n: Int): Int = {
+    def factorial(x: Int, result: Int): Int =
+      if (x == 0) result
+      else factorial(x - 1, result * f(x))
+    factorial(n, 1)
+  }
+
 //  factorial using functional style
   def factorial(n: Int): Int = 1 to n reduce(_*_)
 }
